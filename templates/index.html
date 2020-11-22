@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+
+<!-- Head -->
+
+{% block head %}
+<title>Home</title>
+<link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}" />
+{% endblock %}
+
+<!-- body -->
+
+{% block body %}
+
+<section class="header" style="color: white;" >
+    <h1 style="text-align: center;">
+        <b style="color: red"
+        >C<i class="fa fa-pulse fa-virus"></i>vid-19</b
+        >
+        Tracker
+    </h1>
+    <p class="text-secondary" style="text-align: center">
+      <small>
+        Sri Lanka & Global <br />
+        Powered By: <a href="https://www.prorakabd.xyz">www.prorakabd.xyz</a>
+      </small>
+    </p>
+
+</section>
+
+<section>
+{% if type == 'local' %}
+<div style="width: 100%;text-align: center;">
+  <div class="btn-group mb-4" role="group" aria-label="Basic example">
+    <a href="/home/sl" class="btn btn-danger btn-sm">Local(SL) <i class="fas fa-flag"></i></a>
+    <a href="/home/gl" class="btn btn-outline-danger btn-sm">Global <i class="fas fa-globe">   </i></a>
+  </div>
+</div>
+
+
+<h3 style="text-align: center;color: white;">Local(SL) <i class="fas fa-flag"></i></h3>
+<br>
+<div
+  style="
+    display: block;
+    min-height: 10rem;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+  "
+  class="data"
+>
+  <div style="display: flex; justify-content: space-around; width: 100%; flex-wrap:wrap;">
+    <!-- <p>
+      <i class="fa fa-clock"></i>
+      Updated Time : <br />
+      <span>{{data.data.update_date_time}}</span>
+    </p> -->
+
+    <div class="data-card">
+        <p>
+          <i style="font-size: 3rem" class="fa fa-heart"></i> <br /> <hr>
+          Cases Today : <br />
+          {% if data.data.local_new_cases > 0 %}
+            <span class="badge badge-pill badge-primary">{{data.data.local_new_cases}}</span>
+            {% else %}
+            <span class="badge badge-pill badge-primary">No Data Yet <br>
+                 <i class="fas fa-spinner fa-pulse"></i> </span>
+          {% endif %}
+        </p>
+      </div>
+
+      
+    <div class="data-card">
+        <p>
+          <i style="font-size: 3rem" class="fa fa-heartbeat"></i> <br /> <hr>
+          Deaths Today : <br />
+          {% if data.data.local_new_cases > 0 %}
+            <span class="badge badge-pill badge-primary">{{data.data.local_new_deaths}}</span>
+            {% else %}
+            <span class="badge badge-pill badge-primary">No Data Yet <br>
+                 <i class="fas fa-spinner fa-pulse"></i> </span>
+          {% endif %}
+                    
+        </p>
+      </div>
+
+    <div class="data-card">
+      <p>
+        <i style="font-size: 3rem" class="fas fa-thermometer"></i> <br /> <hr>
+        Local Cases : <br />
+        <span class="badge badge-pill badge-primary"
+          >{{data.data.local_total_cases}}</span
+        >
+      </p>
+    </div>
+
+    <div class="data-card">
+        <p>
+          <i style="font-size: 3rem" class="fa fa-check-circle"></i> <br /> <hr>
+          Local Recovered : <br />
+          <span class="badge badge-pill badge-primary"
+            >{{data.data.local_recovered}}</span
+          >
+        </p>
+      </div>
+
+    <div class="data-card">
+      <p>
+        <i style="font-size: 3rem" class="fa fa-ambulance"></i> <br /> <hr>
+        Local Deaths : <br />
+        <span class="badge badge-pill badge-primary">{{data.data.local_deaths}}</span>
+      </p>
+    </div>
+
+    <div class="data-card">
+        <p>
+          <i style="font-size: 3rem" class="fa fa-bed"></i> <br /> <hr>
+          Active Cases : <br />
+          <span class="badge badge-pill badge-primary"
+            >{{data.data.local_active_cases}}</span
+          >
+        </p>
+      </div>
+
+  </div>
+</div>
+<hr>
+<div style="display: flex;width: 100%;align-items: center;justify-content: center; flex-direction: column;color: white;text-align: center;">
+  <h3 style="padding:10px;">Breakdown of COVID Cases - Sri Lanka <i class="fas fa-flag"></i></h3>
+  <hr>
+  <img class="chart" src="../static/charts/chart.png" alt="">
+</div>
+
+{% else %}
+<div style="width: 100%;text-align: center;">
+  <div class="btn-group mb-4" role="group" aria-label="Basic example">
+    <a href="/home/sl" class="btn btn-outline-danger btn-sm">Local(SL) <i class="fas fa-flag"></i></a>
+    <a href="/home/gl" class="btn btn-danger btn-sm">Global <i class="fas fa-globe">   </i></a>
+  </div>
+</div>
+
+
+  <h3 style="text-align: center;color: white;">Global <i class="fas fa-globe"></i></h3>
+  <br>
+  <div
+    style="
+      display: block;
+      min-height: 10rem;
+      text-align: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px;
+    "
+    class="data"
+  >
+    <div style="display: flex; justify-content: space-around; width: 100%; flex-wrap:wrap;">
+      <!-- <p>
+        <i class="fa fa-clock"></i>
+        Updated Time : <br />
+        <span>{{data.data.update_date_time}}</span>
+      </p> -->
+
+      <div class="data-card">
+          <p>
+            <i style="font-size: 3rem" class="fa fa-heart"></i> <br /> <hr>
+            Cases Today: <br />
+            {% if data.data.global_new_cases > 0 %}
+              <span class="badge badge-pill badge-primary">{{data.data.global_new_cases}}</span>
+              {% else %}
+              <span class="badge badge-pill badge-primary">No Data Yet <br>
+                  <i class="fas fa-spinner fa-pulse"></i> </span>
+            {% endif %}
+          </p>
+        </div>
+
+        
+      <div class="data-card">
+          <p>
+            <i style="font-size: 3rem" class="fa fa-heartbeat"></i> <br /> <hr>
+            Deaths Today: <br />
+            {% if data.data.global_new_cases > 0 %}
+              <span class="badge badge-pill badge-primary">{{data.data.global_new_deaths}}</span>
+              {% else %}
+              <span class="badge badge-pill badge-primary">No Data Yet <br>
+                  <i class="fas fa-spinner fa-pulse"></i> </span>
+            {% endif %}
+                      
+          </p>
+        </div>
+
+      <div class="data-card">
+        <p>
+          <i style="font-size: 3rem" class="fas fa-thermometer"></i> <br /> <hr>
+          Global Cases : <br />
+          <span class="badge badge-pill badge-primary"
+            >{{data.data.global_total_cases}}</span
+          >
+        </p>
+      </div>
+
+      <div class="data-card">
+          <p>
+            <i style="font-size: 3rem" class="fa fa-check-circle"></i> <br /> <hr>
+            Global Recovered : <br />
+            <span class="badge badge-pill badge-primary"
+              >{{data.data.global_recovered}}</span
+            >
+          </p>
+        </div>
+
+      <div class="data-card">
+        <p>
+          <i style="font-size: 3rem" class="fa fa-ambulance"></i> <br /> <hr>
+          Global Deaths : <br />
+          <span class="badge badge-pill badge-primary">{{data.data.global_deaths}}</span>
+        </p>
+      </div>
+      <div class="data-card">
+        <p>
+          <i style="font-size: 3rem" class="fa fa-bed"></i> <br /> <hr>
+          Active Cases : <br />
+          <span class="badge badge-pill badge-primary"
+            >{{active_cases}}</span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+<hr>
+  <div style="display: flex;width: 100%;align-items: center;justify-content: center; flex-direction: column;color: white;text-align: center;">
+    <h3 style="padding:10px;">Breakdown of COVID Cases - Global <i class="fas fa-globe"></i></h3>
+    <hr>
+    <img class="chart" src="../static/charts/chart_gl.png" alt="">
+  </div>
+{% endif %}
+<hr>
+
+<br>
+<div style="width: 100%;text-align: center;">
+  <a class="btn btn-info float-news my-float" href="/news"> <i class="fas fa-newspaper"></i> <br></a>
+</div>
+
+<hr>
+
+<p  class="text-muted" style="text-align: center;">
+<small><i class="fa fa-clock"></i> Updated:
+   <b>{{data.data.update_date_time}}</b> |
+  </small>  
+  <small>
+   <i class="fas fa-link"> </i> Source:
+   <b><a href="https://hpb.health.gov.lk">Health Promotion Bureau-SL (API)</a></b>
+  </small>
+</p>
+
+
+
+<a href="/download" class="float btn">
+  <i class="fa fa-file-csv my-float"></i>
+
+</a>
+</section>
+
+
+
+
+
+{% endblock %}

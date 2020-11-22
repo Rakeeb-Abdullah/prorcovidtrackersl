@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+<!-- head -->
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/news.css')}}" />
+
+<title>Covid News - SL</title>
+{% endblock %}
+<!-- body -->
+{% block body %}
+
+<h1 class="mt-2" style="color: white; text-align: center">
+  <i class="fas fa-newspaper"></i> <br />
+  <b style="color: red"
+    >C<i style="font-size: 1.6rem" class="fas fa-virus fa-pulse"></i>vid </b
+  >News - SL
+</h1>
+
+<div class="container">
+  <div class="row">
+    {% for news in news_list %}
+    <!-- image list -->
+    {% set images =
+    ['https://economynext.com/wp-content/uploads/2020/10/UPDATE_a.jpg','https://economynext.com/wp-content/uploads/2020/10/artwork.psd-copy-700x394.jpg','https://cdn.sanity.io/images/0vv8moc6/patientcare/a20423b7269ae73629152e8a0d9c89656a1a75b4-780x570.jpg','https://www.efca.be/sites/default/files/styles/large/public/2020-04/Covid%20update%20modified.jpg?itok=KfWGAoJX','https://www.kark.com/wp-content/uploads/sites/85/2020/03/thumbnail_Coronavirus-Update.jpg?w=1280&h=720&crop=1']
+    %} {% set image = images| random %}
+
+    <div class="col-sm-4">
+      <div
+        class="card text-center m-4 text-white rounded-5"
+        style="background-color: rgba(211, 32, 62, 0.712)"
+      >
+        <img
+          style="height: 180px"
+          class="card-img-top"
+          src="{{image}}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{news.news_heading}}</h5>
+          <small class="card-text">{{news.news_text}}.</small>
+          <a href="{{news.news_link}}" class="btn btn-primary">See More</a>
+        </div>
+        <div class="card-footer text-muted">
+          <small>{{news.news_date}}</small>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<p style="text-align: center">
+  <a class="btn btn-primary" href="https://www.newsfirst.lk">See More News</a>
+</p>
+
+<hr />
+<p style="text-align: center" class="text-muted">
+  <small
+    >News Source:
+    <b><a href="https://www.newsfirst.lk">NewsFirst.lk</a></b></small
+  >
+  <br />
+  <img
+    style="width: 150px"
+    src="https://www.newsfirst.lk/wp-content/themes/nfst-eng-theme/assets/dist/images/News1st_logo-lg-v6.png"
+    alt=""
+  />
+</p>
+
+{% endblock %}

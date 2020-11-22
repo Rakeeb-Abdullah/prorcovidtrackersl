@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-image: url("../images/3731704.jpg");
+}
+
+li a {
+  font-size: 1.2rem;
+}
+
+nav {
+  background-color: #130830;
+}

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/main.css')}}"
+    />
+    {% block head %} {% endblock %}
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#">
+        <b style="color: red"
+          >C<i style="font-size: 15px" class="fa fa-pulse fa-virus"></i
+          >vid-19</b
+        >
+        Tracker</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item active px-5">
+            <a
+              data-toggle="popover"
+              data-trigger="hover"
+              data-placement="bottom"
+              title="Home"
+              class="nav-link"
+              href="/home"
+            >
+              <i class="fas fa-home"></i> Home</a
+            >
+          </li>
+          <li class="nav-item active px-5">
+            <a
+              data-toggle="popover"
+              data-trigger="hover"
+              title="News"
+              data-placement="bottom"
+              class="nav-link"
+              href="/news"
+              ><i class="fa fa-newspaper"> </i> News</a
+            >
+          </li>
+          <li
+            data-trigger="hover"
+            data-toggle="popover"
+            title="Share"
+            class="nav-item dropdown active px-5"
+          >
+            <a
+              data-toggle="dropdown"
+              data-placement="bottom"
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fas fa-share-alt"> </i> Share
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-center"
+              aria-labelledby="navbarDropdown"
+            >
+              <a
+                href="https://twitter.com/intent/tweet?url={{g.url}}&text=Get the latest update on covid at {{g.url}}"
+                target="_blank"
+                class="dropdown-item"
+                href="#"
+                ><i class="fa fa-twitter"></i> Tweet</a
+              >
+              <a
+                class="dropdown-item"
+                data-toggle="modal"
+                data-target="#exampleModal"
+                ><i class="fa fa-copy"></i> Copy Link</a
+              >
+            </div>
+          </li>
+          <li class="nav-item active px-5">
+            <a
+              data-toggle="popover"
+              data-trigger="hover"
+              title="About"
+              data-placement="bottom"
+              class="nav-link"
+              href="/about"
+              tabindex="-1"
+              aria-disabled="true"
+              ><i class="fas fa-info-circle"> </i> About</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              <i class="fa fa-copy"></i> Copy Link
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <textarea type="text" rows="3" class="form-control control-lg">
+Get the latest
+Covid updates:
+{{g.url}}
+            </textarea>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% block body %}{% endblock %}
+
+    <div
+      style="
+        display: flex;
+        width: 100%;
+        color: white;
+        background-color: #d3203d;
+        min-height: 10rem;
+        flex-wrap: wrap;
+      "
+      class="footer mt-5"
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: 25%;
+        "
+      >
+        <h2 style="padding: 15px" class="border-right">
+          #STAYHOME <br />
+          #STAYSAFE
+        </h2>
+      </div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: 75%;
+        "
+      >
+        <p style="text-align: center">
+          <small class="text-muted">© prorakabd.xyz - 2020</small> <br />
+          Developed By: <a href="https://www.prorakabd.xyz">prorakabd.xyz</a>
+          <br />
+          <br />
+          <span style="color: white"
+            ><a style="font-size: 1.5rem;color: white" href="https://twitter.com/rakeeb_abd"
+              ><i class="fa fa-twitter"></i
+            ></a> 
+          </span>
+           
+          <span>
+            <a style="font-size: 1.5rem;color: white" href="https://instagram.com/rakeeb_abd"
+              <i class="fa fa-instagram">  </i>
+            </a>
+          </span>
+          
+          <span style="color: white"
+            ><a style="font-size: 1.5rem;color: white" href="https://github.com/Rakeeb_Abdullah"
+              ><i class="fa fa-github">  </i
+            ></a>
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
+      integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/2259b3dc5d.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        $('[data-toggle="popover"]').popover();
+      });
+    </script>
+    <script src="{{url_for('static',filename='js/animation.js')}}"></script>
+  </body>
+</html>
