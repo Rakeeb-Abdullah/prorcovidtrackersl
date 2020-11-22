@@ -48,8 +48,8 @@ def download():
         'Number': [info['local_new_cases'] if info['local_new_cases'] > 0 else 'No Data Available Yet', info['local_new_deaths'] if info['local_new_deaths'] > 0 else 'No Data Available Yet', info['local_total_cases'], info['local_recovered'], info['local_deaths'], info['local_active_cases'], info['global_new_cases'], info['global_new_deaths'], info['global_total_cases'], info['global_recovered'], info['global_deaths']]
     }
     df = pd.DataFrame(data, columns=['Title', 'Number'])
-    df.to_csv(r'./download/covid_report.csv')
-    download = r'./download/covid_report.csv'
+    df.to_csv('./download/covid_report.csv')
+    download = './download/covid_report.csv'
     return send_file(download, as_attachment=True)
 
 
